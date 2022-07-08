@@ -83,7 +83,7 @@ class CameraPageState extends State<CameraPage> {
                 icon: const Icon(Icons.settings),
                 color: Colors.white,
                 iconSize: 40,
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 48, 0, 6),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 35, 0, 6),
                 onPressed: () {
                   Navigator.pushNamed(context, 'MenuPage');
                 },

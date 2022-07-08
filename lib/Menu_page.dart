@@ -17,23 +17,26 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 5),
         child: Column(
           children: [
             Align(
               alignment: Alignment.topRight,
-              child:
-                Column(children: [
+              child: Column(
+                children: [
                   IconButton(
                     icon: const Icon(Icons.close),
+                    iconSize: 40,
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 35, 0, 6),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
-                ],), 
+                ],
+              ),
             ),
             const Text(
-              '\nMenü\n\n',
+              'Menü\n\n',
               textAlign: TextAlign.center,
               textScaleFactor: 1.5,
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -56,6 +59,7 @@ class _MenuPageState extends State<MenuPage> {
                 Expanded(child: Container()),
                 IconButton(
                   onPressed: () {},
+                  iconSize: 40,
                   icon: const Icon(Icons.toggle_on),
                 ),
               ],
@@ -120,11 +124,11 @@ class _MenuPageState extends State<MenuPage> {
                           style: TextStyle(height: 1.5)),
                       TextSpan(
                           text:
-                              'Datenschutz\nVerantwortlich gemäß § 5 TMG ist Helena Däsch COO\n\n',
+                              'Datenschutz Verantwortlich \ngemäß § 5 TMG ist\nHelena Däsch COO\n\n',
                           style: TextStyle(height: 1.5)),
                       TextSpan(
                           text:
-                              'Medizinische Zweckbestimmung:\nhttps://www.adliance.net/medizin-software/zweckbestimmung\n\n\n',
+                              'Medizinische Zweckbestimmung:\nhttps://www.adliance.net/medizin-software/\nzweckbestimmung\n\n\n',
                           style: TextStyle(height: 1.5)),
                     ],
                   ),
