@@ -21,7 +21,8 @@ class _MenuPageState extends State<MenuPage> {
         child: Column(
           children: [
             IconButton(
-              icon: const Icon(Icons.expand_more),
+              alignment: Alignment.topRight,
+              icon: const Icon(Icons.close),
               onPressed: () {
                 Navigator.of(context).pop();
               },
