@@ -20,12 +20,17 @@ class _MenuPageState extends State<MenuPage> {
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
-            IconButton(
+            Align(
               alignment: Alignment.topRight,
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              child:
+                Column(children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],), 
             ),
             const Text(
               '\nMenü\n\n',
