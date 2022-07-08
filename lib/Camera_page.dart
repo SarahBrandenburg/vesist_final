@@ -88,12 +88,6 @@ class CameraPageState extends State<CameraPage> {
                   Navigator.pushNamed(context, 'MenuPage');
                 },
               ),
-              IconButton(
-                icon: const Icon(Icons.flash_on),
-                color: Colors.white,
-                iconSize: 40,
-                onPressed: () {},
-              ),
             ],
           ),
           Align(
