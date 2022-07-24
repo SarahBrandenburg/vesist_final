@@ -1,37 +1,28 @@
 import 'dart:async';
-import 'dart:io';
-//import 'dart:html';
-//import 'dart:ui';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/cupertino.dart';
-//import 'package:flutter/rendering.dart';
-//import 'package:drag_down_to_pop/drag_down_to_pop.dart';
-import 'Camera_page.dart';
-import 'Picture_page.dart';
-import 'Drawing_page.dart';
-import 'Menu_page.dart';
-import 'Alert_page.dart';
 
-//late List<CameraDescription> cameras;
-//just a command
+import 'camera_page.dart';
+import 'picture_page.dart';
+import 'drawing_page.dart';
+import 'menu_page.dart';
+import 'alert_page.dart';
 
 void main() async {
-  // Ensure that plugin services are initialized so that `availableCameras()`
-  // can be called before `runApp()`
+  // Sicherstellung das Plugins richtig initializiert sind
   WidgetsFlutterBinding.ensureInitialized();
-  // Obtain a list of the available cameras on the device.
+  // Enthält eine Liste der Verfügbaren Kameras auf der App
   final cameras = await availableCameras();
-  // Get a specific camera from the list of available cameras.
-  //final firstCamera = cameras.first;
+
   runApp(
     MaterialApp(
       routes: {
         'CameraPage': (context) => CameraPage(camera: cameras.first),
-        'PicturePage': (context) => PicturePage(imagePath: ''),
-        'MenuPage': (context) => MenuPage(),
+        'PicturePage': (context) => const PicturePage(imagePath: ''),
+        'MenuPage': (context) => const MenuPage(),
         'DrawingPage': (context) => const DrawingPage(imagePath: ''),
-        'AlertPage': (context) => AlertPage(),
+        'AlertPage': (context) => const AlertPage(),
       },
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -58,8 +49,8 @@ class SplashScreenState extends State<MyHomePage> {
     super.initState();
     Timer(
         const Duration(seconds: 5),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => AlertPage())));
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const AlertPage())));
   }
 
   @override

@@ -1,11 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'dart:isolate';
-import 'package:image/image.dart' as imd;
-import 'package:native_opencv/imgproc.dart';
-//import 'package:test_appliction/index.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:test_appliction/Picture_page.dart';
 
 class DrawingPage extends StatelessWidget {
   static const String routeName = '/drawing';
@@ -20,7 +16,7 @@ class DrawingPage extends StatelessWidget {
       // constructor with the given path to display the image.
       body: Stack(
         children: [
-          Container(
+          SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: FittedBox(
@@ -69,20 +65,4 @@ class DrawingPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class DecodeParam {
-  final File file;
-  final SendPort sendPort;
-  DecodeParam(this.file, this.sendPort);
-}
-
-void decodeIsolate(DecodeParam param) {
-  // Read an image from file (webp in this case).
-  // decodeImage will identify the format of the image and use the appropriate
-  // decoder.
-  var image = imd.readJpg(param.file.readAsBytesSync())!;
-  // Resize the image to a 120x? thumbnail (maintaining the aspect ratio).
-  var thumbnail = imd.copyResize(image, width: 120);
-  param.sendPort.send(thumbnail);
 }

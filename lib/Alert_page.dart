@@ -1,9 +1,13 @@
+// ignore_for_file: file_names
+
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertPage extends StatefulWidget {
   static const String routeName = '/alert';
+
+  const AlertPage({Key? key}) : super(key: key);
 
   @override
   _AlertPageState createState() => _AlertPageState();

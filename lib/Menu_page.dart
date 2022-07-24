@@ -1,8 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-//import 'package:test_appliction/index.dart';
 
 class MenuPage extends StatefulWidget {
   static const String routeName = '/menu';
+
+  const MenuPage({Key? key}) : super(key: key);
 
   @override
   _MenuPageState createState() => _MenuPageState();

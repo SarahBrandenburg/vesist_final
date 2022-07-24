@@ -1,9 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'dart:async';
-import 'package:test_appliction/Picture_page.dart';
-import 'Picture_page.dart';
-//import 'package:test_appliction/index.dart';
+import 'package:test_appliction/picture_page.dart';
 
 // A screen that allows users to take a picture using a given camera.
 class CameraPage extends StatefulWidget {
@@ -122,7 +122,6 @@ class CameraPageState extends State<CameraPage> {
                   );
                 } catch (e) {
                   // If an error occurs, log the error to the console.
-                  print(e);
                 }
               },
             ),

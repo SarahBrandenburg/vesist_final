@@ -1,33 +1,28 @@
-//import 'dart:html';
-import 'package:camera/camera.dart';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:math';
-import 'Drawing_page.dart';
-//import 'package:test_appliction/index.dart';
+import 'drawing_page.dart';
 import 'package:native_opencv/imgproc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:async';
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 
 // A widget that displays the picture taken by the user.
+// ignore: must_be_immutable
 class PicturePage extends StatelessWidget {
   static const String routeName = '/picture';
   final String imagePath;
-
   // ignore: use_key_in_widget_constructors
-  PicturePage({/*super.key,*/ required this.imagePath});
+  const PicturePage({/*super.key,*/ required this.imagePath});
   @override
-  int counter = 0;
   Widget build(BuildContext context) {
     return Scaffold(
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: FittedBox(
@@ -77,7 +72,7 @@ class PicturePage extends StatelessWidget {
                   Directory tempDir = await getTemporaryDirectory();
 
                   int random = Random().nextInt(10000000);
-                  String filePath = '${tempDir.path}/someImg${random}.jpg';
+                  String filePath = '${tempDir.path}/someImg$random.jpg';
                   processImage(imagePath, filePath);
 
                   Navigator.of(context).push(
@@ -93,6 +88,7 @@ class PicturePage extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 Future<String> get _localPath async {
   final directory = await getApplicationDocumentsDirectory();
 
