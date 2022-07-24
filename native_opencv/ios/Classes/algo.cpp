@@ -24,12 +24,9 @@ extern "C" {
         if(!inimg.data)
         {
             std::cout<<"Could not find the image";
-            //return -1;
+
         }
 
-        
-        // namedWindow( "original", WINDOW_NORMAL );
-        // imshow( "original", inimg ); 
 
         cvtColor(inimg, hsv, COLOR_BGR2HSV);
         vector<Mat> channels;
@@ -48,25 +45,20 @@ extern "C" {
                 shiftedH.at<unsigned char>(j,i) = (shiftedH.at<unsigned char>(j,i) + shift)%180;
             }
         } 
-        // namedWindow( "shiftedH", WINDOW_NORMAL );
-        // imshow("shiftedH", shiftedH);
-          
+
 
 ////////METHODE1/////////
         Mat cannyH;
         Canny(shiftedH, cannyH, 100, 50);
-        Mat cannyS;
-        Canny(S, cannyS, 200, 100);
+        //Mat cannyS;
+        //Canny(S, cannyS, 200, 100);
 
-    // extract contours of the canny image:
+    // extrahieren der Konturen aus dem canny Fotos
         std::vector<std::vector<Point> > contoursH;
         std::vector<Vec4i> hierarchyH;
         findContours(cannyH,contoursH, hierarchyH,  RETR_TREE , CHAIN_APPROX_SIMPLE);
 
-        // namedWindow( "cannyH", WINDOW_NORMAL );
-        // imshow("cannyH", cannyH);
-
-    // draw the contours to a copy of the input image:
+    // Konturen zeichnen
         Mat outputH = inimg.clone();
         for( int i = 0; i< contoursH.size(); i++ )
         {
@@ -83,29 +75,23 @@ extern "C" {
             drawContours( outputH, contoursH, i, Scalar(0,0,255), 10 ,8 , hierarchyH, 0);               // <-- CHANGE thickness of drawing (5)
 
         }
-
-    
-        // namedWindow( "final", WINDOW_NORMAL );
-        // imshow( "final", outputH); 
+ 
 
 
 //-----------------------METHODE2-----------------------//
         inRange(shiftedH,Scalar(0,0,0),Scalar(60,0,0),thres);                                   // <-- CHANGE Max Black Color (Sensity) (3.1)
 
-        // namedWindow( "Range_Image", WINDOW_NORMAL );
-        // imshow( "Range_Image", thres ); 
 
-    // extract contours of the canny image:
+
+    // extrahieren der Konturen aus dem canny Fotos
         std::vector<std::vector<Point> > contoursH_Range;
         std::vector<Vec4i> hierarchyH_Range;
         findContours(thres,contoursH_Range, hierarchyH_Range,  RETR_TREE , CHAIN_APPROX_SIMPLE);
 
-        // namedWindow( "cannyState_Range", WINDOW_NORMAL );
-        // imshow("cannyState_Range", thres);
 
 
        
-    // draw the contours to a copy of the input image:
+    // Konturen zeichnen
         Mat outputH_Range = inimg.clone();
             
         for( int i = 0; i< contoursH_Range.size(); i++ )
@@ -126,12 +112,10 @@ extern "C" {
             drawContours(thres,contoursH_Range,i, Scalar(0,0,255), 150, 8, hierarchyH_Range, 0);
         }
 
-        // namedWindow( "Range_final", WINDOW_NORMAL );
-        // imshow( "Range_final", outputH_Range ); 
         
         imwrite(output,outputH);
     
-
+ 
     
     }
 }
